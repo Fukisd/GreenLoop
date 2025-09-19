@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Your GreenLoop Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            color: #2c5f41;
+            margin-bottom: 30px;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2c5f41;
+        }
+        .content {
+            margin-bottom: 30px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #2c5f41;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🌱 GreenLoop</div>
+            <h1>Welcome to Circular Fashion!</h1>
+        </div>
+        
+        <div class="content">
+            <p>Hello <span th:text="${fullName}">User</span>,</p>
+            
+            <p>Thank you for joining GreenLoop - the circular fashion and recycling platform that's making sustainable fashion accessible to everyone!</p>
+            
+            <p>To complete your registration and start your sustainable fashion journey, please verify your email address by clicking the button below:</p>
+            
+            <div style="text-align: center;">
+                <a th:href="${verifyUrl}" class="button">Verify My Account</a>
+            </div>
+            
+            <p>Once verified, you'll be able to:</p>
+            <ul>
+                <li>🛍️ Buy and sell pre-loved fashion items</li>
+                <li>🔄 Rent trendy pieces for special occasions</li>
+                <li>♻️ Participate in our recycling programs</li>
+                <li>🌱 Track your sustainability impact</li>
+                <li>🤝 Connect with eco-conscious fashion enthusiasts</li>
+            </ul>
+            
+            <p>If the button doesn't work, you can copy and paste this link into your browser:</p>
+            <p style="word-break: break-all; color: #2c5f41;" th:text="${verifyUrl}">Verification URL</p>
+            
+            <p><strong>Note:</strong> This verification link will expire in 24 hours for security reasons.</p>
+        </div>
+        
+        <div class="footer">
+            <p>This email was sent from GreenLoop. If you didn't create an account with us, please ignore this email.</p>
+            <p>© 2024 GreenLoop. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html> 

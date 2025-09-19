@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Login Alert - GreenLoop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            color: #2c5f41;
+            margin-bottom: 30px;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2c5f41;
+        }
+        .alert-box {
+            background-color: #e8f5e8;
+            border-left: 4px solid #2c5f41;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .details {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🌱 GreenLoop</div>
+            <h1>🔐 Login Alert</h1>
+        </div>
+        
+        <div class="alert-box">
+            <h3>New login detected for your account</h3>
+            <p>Hello <span th:text="${fullName}">User</span>,</p>
+            <p>We detected a new login to your GreenLoop account. If this was you, no action is needed.</p>
+        </div>
+        
+        <div class="details">
+            <h4>Login Details:</h4>
+            <ul>
+                <li><strong>Time:</strong> <span th:text="${loginTime}">Login Time</span></li>
+                <li><strong>IP Address:</strong> <span th:text="${ipAddress}">IP Address</span></li>
+                <li><strong>Device/Browser:</strong> <span th:text="${userAgent}">User Agent</span></li>
+            </ul>
+        </div>
+        
+        <div style="background-color: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0;">
+            <h4>⚠️ Didn't recognize this login?</h4>
+            <p>If you didn't log in at this time, please:</p>
+            <ol>
+                <li>Change your password immediately</li>
+                <li>Review your account settings</li>
+                <li>Contact our support team if you suspect unauthorized access</li>
+            </ol>
+        </div>
+        
+        <p>Thank you for helping us keep your GreenLoop account secure!</p>
+        
+        <div class="footer">
+            <p>This is an automated security notification from GreenLoop.</p>
+            <p>© 2024 GreenLoop. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html> 
