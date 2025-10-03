@@ -6,39 +6,52 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserMapper {
-    
+
     public UserResponse toUserResponse(User user) {
         if (user == null) {
             return null;
         }
-        
+
         return UserResponse.builder()
-                .userId(user.getUserId())
+                .userId(user.getUserId().toString()) // Convert UUID to String
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .email(user.getEmail())
                 .username(user.getUsername())
+                .phone(user.getPhone())
                 .userType(user.getUserType())
-                .sustainabilityScore(user.getSustainabilityScore())
-                .emailVerified(user.isEmailVerified())
+                .role(user.getRole())
+                .sustainabilityScore(user.getSustainabilityScore().doubleValue())
+                .sustainabilityPoints(user.getSustainabilityPoints())
+                .emailVerified(user.getEmailVerified())
+                .phoneVerified(user.getPhoneVerified())
                 .avatarUrl(user.getAvatarUrl())
-                .createdAt(user.getCreatedAt())
+                .createdAt(user.getCreatedAt().toString())
+                .updatedAt(user.getUpdatedAt().toString())
                 .build();
     }
-    
-    public UserResponse toPublicUserResponse(User user) {
+
+    public UserResponse toUserResponseWithDetails(User user) {
         if (user == null) {
             return null;
         }
-        
+
         return UserResponse.builder()
-                .userId(user.getUserId())
+                .userId(user.getUserId().toString()) // Convert UUID to String
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
+                .email(user.getEmail())
                 .username(user.getUsername())
+                .phone(user.getPhone())
                 .userType(user.getUserType())
-                .sustainabilityScore(user.getSustainabilityScore())
+                .role(user.getRole())
+                .sustainabilityScore(user.getSustainabilityScore().doubleValue())
+                .sustainabilityPoints(user.getSustainabilityPoints())
+                .emailVerified(user.getEmailVerified())
+                .phoneVerified(user.getPhoneVerified())
                 .avatarUrl(user.getAvatarUrl())
+                .createdAt(user.getCreatedAt().toString())
+                .updatedAt(user.getUpdatedAt().toString())
                 .build();
     }
 } 

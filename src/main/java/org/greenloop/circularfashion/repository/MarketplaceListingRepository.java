@@ -7,11 +7,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
-public interface MarketplaceListingRepository extends JpaRepository<MarketplaceListing, Long> {
+public interface MarketplaceListingRepository extends JpaRepository<MarketplaceListing, UUID> {
     
-    List<MarketplaceListing> findBySellerUserId(Long sellerId);
+    List<MarketplaceListing> findBySellerUserId(UUID sellerId);
     
     List<MarketplaceListing> findByStatus(ListingStatus status);
     

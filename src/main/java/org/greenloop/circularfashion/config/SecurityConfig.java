@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -38,6 +39,7 @@ public class SecurityConfig {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
+    @SuppressWarnings("removal")
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
@@ -50,12 +52,41 @@ public class SecurityConfig {
                         // Public endpoints
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/public/**").permitAll()
-                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                        .requestMatchers("/actuator/**").permitAll()
+                        .requestMatchers("/api/items/public/**").permitAll()
+                        .requestMatchers("/api/marketplace/public/**").permitAll()
+                        .requestMatchers("/api/collections/public/**").permitAll()
                         
-                        // Protected endpoints
+                        // Swagger/OpenAPI endpoints
+                        .requestMatchers("/swagger-ui/**").permitAll()
+                        .requestMatchers("/swagger-ui.html").permitAll()
+                        .requestMatchers("/v3/api-docs/**").permitAll()
+                        .requestMatchers("/swagger-resources/**").permitAll()
+                        .requestMatchers("/webjars/**").permitAll()
+                        
+                        // Actuator and WebSocket
+                        .requestMatchers("/actuator/**").permitAll()
+                        .requestMatchers("/api/ws/**").permitAll()
+                        .requestMatchers("/ws/**").permitAll()
+                        
+                        // User endpoints (require authentication)
+                        .requestMatchers("/api/user/**").hasAnyRole("USER", "ADMIN", "STAFF")
+                        .requestMatchers("/api/items/**").hasAnyRole("USER", "ADMIN", "STAFF")
+                        .requestMatchers("/api/marketplace/**").hasAnyRole("USER", "ADMIN", "STAFF")
+                        .requestMatchers("/api/collections/**").hasAnyRole("USER", "ADMIN", "STAFF")
+                        .requestMatchers("/api/orders/**").hasAnyRole("USER", "ADMIN", "STAFF")
+                        .requestMatchers("/api/reviews/**").hasAnyRole("USER", "ADMIN", "STAFF")
+                        .requestMatchers("/api/posts/**").hasAnyRole("USER", "ADMIN", "STAFF")
+                        .requestMatchers("/api/messages/**").hasAnyRole("USER", "ADMIN", "STAFF")
+                        
+                        // Admin-only endpoints
+                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/api/moderator/**").hasAnyRole("ADMIN", "STAFF")
+                        
+                        // All other requests require authentication
                         .anyRequest().authenticated()
                 )
+                .userDetailsService(userDetailsService)
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }

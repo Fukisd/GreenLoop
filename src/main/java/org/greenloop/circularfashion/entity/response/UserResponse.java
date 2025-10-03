@@ -1,12 +1,10 @@
-package org.greenloop.circularfashion.entity.response;
+﻿package org.greenloop.circularfashion.entity.response;
 
-import org.greenloop.circularfashion.enums.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
+import org.greenloop.circularfashion.entity.User;
 
 @Data
 @NoArgsConstructor
@@ -14,14 +12,19 @@ import java.time.LocalDateTime;
 @Builder
 public class UserResponse {
     
-    private Long userId;
+    private String userId; // Changed from UUID to String
     private String firstName;
     private String lastName;
     private String email;
     private String username;
-    private UserType userType;
-    private Integer sustainabilityScore;
-    private boolean emailVerified;
+    private String phone; // Added phone field
+    private User.UserType userType;
+    private User.Role role;
+    private Double sustainabilityScore;
+    private Integer sustainabilityPoints;
+    private Boolean emailVerified;
+    private Boolean phoneVerified;
     private String avatarUrl;
-    private LocalDateTime createdAt;
-} 
+    private String createdAt;
+    private String updatedAt;
+}
