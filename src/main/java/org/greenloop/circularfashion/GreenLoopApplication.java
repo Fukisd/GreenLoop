@@ -24,14 +24,6 @@ public class GreenLoopApplication {
         System.out.println("📊 Actuator endpoints available at: /actuator");
         System.out.println("❤️ Health check available at: /api/public/health");
         System.out.println("⏰ Application startup completed at: " + java.time.LocalDateTime.now());
-        
-        // Add a small delay to ensure everything is fully initialized
-        try {
-            Thread.sleep(2000);
-            System.out.println("✅ Application is fully ready for health checks!");
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
     }
 
 } 
