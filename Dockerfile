@@ -2,23 +2,29 @@ FROM openjdk:21-jdk-slim
 
 WORKDIR /app
 
-# Copy Maven wrapper and pom.xml
-COPY mvnw .
-COPY mvnw.cmd .
-COPY .mvn .mvn
+# Install Maven directly instead of using wrapper
+RUN apt-get update && apt-get install -y maven && rm -rf /var/lib/apt/lists/*
+
+# Copy pom.xml first for better Docker layer caching
 COPY pom.xml .
 
-# Set execute permissions for Maven wrapper
-RUN chmod +x ./mvnw
-
-# Download dependencies
-RUN ./mvnw dependency:go-offline -B
+# Download dependencies with retry and timeout settings
+RUN mvn dependency:go-offline -B \
+    -Dmaven.wagon.http.retryHandler.count=3 \
+    -Dmaven.wagon.http.retryHandler.requestSentEnabled=true \
+    -Dmaven.wagon.http.retryHandler.retryInterval=1000
 
 # Copy source code
 COPY src src
 
-# Build application
-RUN ./mvnw clean package -DskipTests
+# Build application with optimized settings
+RUN mvn clean package -DskipTests -B \
+    -Dmaven.test.skip=true \
+    -Dmaven.javadoc.skip=true \
+    -Dmaven.source.skip=true \
+    -Dmaven.wagon.http.retryHandler.count=3 \
+    -Dmaven.wagon.http.retryHandler.requestSentEnabled=true \
+    -Dmaven.wagon.http.retryHandler.retryInterval=1000
 
 # Expose port
 EXPOSE 8080
