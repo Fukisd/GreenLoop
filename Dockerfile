@@ -17,6 +17,9 @@ RUN mvn dependency:go-offline -B \
 # Copy source code
 COPY src src
 
+# Remove BOM characters from Java files
+RUN find src -name "*.java" -exec sed -i '1s/^\xEF\xBB\xBF//' {} \;
+
 # Build application with optimized settings
 RUN mvn clean package -DskipTests -B \
     -Dmaven.test.skip=true \
