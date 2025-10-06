@@ -8,6 +8,9 @@ COPY mvnw.cmd .
 COPY .mvn .mvn
 COPY pom.xml .
 
+# Set execute permissions for Maven wrapper
+RUN chmod +x ./mvnw
+
 # Download dependencies
 RUN ./mvnw dependency:go-offline -B
 
@@ -21,4 +24,4 @@ RUN ./mvnw clean package -DskipTests
 EXPOSE 8081
 
 # Run application
-CMD ["java", "-jar", "target/circular-fashion-0.0.1-SNAPSHOT.jar"] 
+CMD ["java", "-jar", "target/circular-fashion-1.0.0.jar"] 
