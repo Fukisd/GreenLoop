@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to GreenLoop!</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2c5f41;
+            margin-bottom: 10px;
+        }
+        .tagline {
+            color: #6c757d;
+            font-size: 16px;
+            margin: 0;
+        }
+        .content {
+            margin-bottom: 40px;
+        }
+        .greeting {
+            font-size: 18px;
+            color: #2c5f41;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #2c5f41, #3d7c47);
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(44, 95, 65, 0.3);
+        }
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 95, 65, 0.4);
+        }
+        .features {
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+        .features h3 {
+            color: #2c5f41;
+            margin-top: 0;
+        }
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+        .features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .features li:last-child {
+            border-bottom: none;
+        }
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #6c757d;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+                padding: 20px;
+            }
+            .button {
+                padding: 12px 25px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🌱 GreenLoop</div>
+            <p class="tagline">Circular Fashion for a Sustainable Future</p>
+        </div>
+        
+        <div class="content">
+            <p class="greeting">Welcome to GreenLoop, <strong th:text="${recipientName}">User</strong>!</p>
+            
+            <p>Thank you for joining our community of eco-conscious fashion enthusiasts! You're now part of a movement that's transforming the fashion industry through circular economy principles.</p>
+            
+            <div class="button-container">
+                <a th:href="${frontendUrl}" class="button">Start Your Journey</a>
+            </div>
+            
+            <div class="features">
+                <h3>What you can do on GreenLoop:</h3>
+                <ul>
+                    <li>🛍️ <strong>Buy & Sell:</strong> Discover unique pre-loved fashion items</li>
+                    <li>🔄 <strong>Rent:</strong> Access trendy pieces for special occasions</li>
+                    <li>♻️ <strong>Recycle:</strong> Give your old clothes a new life</li>
+                    <li>🌱 <strong>Track Impact:</strong> See your sustainability contribution</li>
+                    <li>🤝 <strong>Connect:</strong> Meet like-minded fashion lovers</li>
+                    <li>📱 <strong>Mobile App:</strong> Shop on the go with our mobile app</li>
+                </ul>
+            </div>
+            
+            <p>Ready to start your sustainable fashion journey? Click the button above to explore GreenLoop and discover amazing fashion pieces while making a positive impact on the environment!</p>
+        </div>
+        
+        <div class="footer">
+            <p>Thank you for choosing sustainable fashion with GreenLoop!</p>
+            <p>© 2024 GreenLoop. All rights reserved. | <a href="#" style="color: #2c5f41;">Privacy Policy</a> | <a href="#" style="color: #2c5f41;">Terms of Service</a></p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
