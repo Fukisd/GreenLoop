@@ -21,7 +21,7 @@ COPY src src
 RUN ./mvnw clean package -DskipTests
 
 # Expose port
-EXPOSE 8081
+EXPOSE 8080
 
 # Run application
 CMD ["java", "-jar", "target/circular-fashion-1.0.0.jar"] 
