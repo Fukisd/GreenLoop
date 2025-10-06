@@ -33,6 +33,15 @@ public class LoggingInterceptor implements HandlerInterceptor {
                 request.getRequestURI(), 
                 response.getStatus(), 
                 executeTime);
+        
+        // Special logging for health check endpoints
+        if (request.getRequestURI().contains("/actuator/health")) {
+            log.warn("HEALTH CHECK: {} {} - Status: {} - Time: {}ms", 
+                    request.getMethod(), 
+                    request.getRequestURI(), 
+                    response.getStatus(), 
+                    executeTime);
+        }
     }
 
     @Override
