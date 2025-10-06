@@ -130,3 +130,4 @@ public class Transaction extends BaseEntity {
     @lombok.Builder.Default
     private Boolean sellerReviewed = false;
 } 
+

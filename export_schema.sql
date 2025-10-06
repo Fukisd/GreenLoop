@@ -49,3 +49,5 @@ JOIN information_schema.key_column_usage AS kcu
 WHERE tc.constraint_type = 'UNIQUE' 
     AND tc.table_schema = 'public'
 ORDER BY tc.table_name, kcu.column_name;
+
+

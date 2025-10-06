@@ -164,3 +164,4 @@ public class LiveStream extends BaseEntity {
     @Column(name = "blocked_reason", length = 500)
     private String blockedReason;
 } 
+

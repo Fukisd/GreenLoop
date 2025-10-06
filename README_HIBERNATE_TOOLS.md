@@ -155,3 +155,5 @@ You'll get **perfectly generated entities** that:
 ---
 
 **Ready to generate your entities? Run the script and get perfect, database-synchronized entity classes in minutes!** 🎯
+
+

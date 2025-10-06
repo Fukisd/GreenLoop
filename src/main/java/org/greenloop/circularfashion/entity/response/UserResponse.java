@@ -1,4 +1,4 @@
-﻿package org.greenloop.circularfashion.entity.response;
+package org.greenloop.circularfashion.entity.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -65,3 +65,5 @@ public class Conversation {
         ACTIVE, ARCHIVED, BLOCKED
     }
 }
+
+

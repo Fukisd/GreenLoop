@@ -1,4 +1,4 @@
-﻿package org.greenloop.circularfashion.entity;
+package org.greenloop.circularfashion.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -19,6 +19,10 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "message_id")
     private Long messageId;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "conversation_id")
+    private Conversation conversation;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "chat_room_id")
@@ -59,3 +63,5 @@ public class Message {
         SYSTEM
     }
 }
+
+

@@ -1,0 +1,58 @@
+# Maven
+target/
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Test files
+src/test/
+
+# Documentation
+*.md
+docs/
+
+# Git
+.git/
+.gitignore
+
+# Docker
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Railway specific
+railway.json
+nixpacks.toml
+Procfile
+.railwayignore
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Firebase
+firebase-admin.json
+firebase-adminsdk-*.json
+
+# Backup files
+*.bak
+*.backup

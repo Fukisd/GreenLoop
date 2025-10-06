@@ -62,3 +62,5 @@ public class OrderItem {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 }
+
+

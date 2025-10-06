@@ -1,4 +1,4 @@
-﻿package org.greenloop.circularfashion.entity;
+package org.greenloop.circularfashion.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

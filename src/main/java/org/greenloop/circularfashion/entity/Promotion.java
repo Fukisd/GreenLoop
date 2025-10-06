@@ -167,3 +167,4 @@ public class Promotion extends BaseEntity {
     @lombok.Builder.Default
     private Boolean autoApply = false; // Automatically apply if conditions met
 } 
+
