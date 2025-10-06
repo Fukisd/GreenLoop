@@ -28,9 +28,12 @@ public class HealthController {
 
     @GetMapping("/actuator/health")
     @Operation(summary = "Actuator health check", description = "Railway health check endpoint")
-    public ResponseEntity<String> getActuatorHealth() {
-        // Always return OK for Railway health check
-        return ResponseEntity.ok("OK");
+    public ResponseEntity<Map<String, Object>> getActuatorHealth() {
+        Map<String, Object> response = new HashMap<>();
+        response.put("status", "UP");
+        response.put("timestamp", LocalDateTime.now());
+        response.put("message", "Green Loop API is healthy!");
+        return ResponseEntity.ok(response);
     }
     
     @GetMapping("/")
