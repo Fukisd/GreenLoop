@@ -28,7 +28,14 @@ public class HealthController {
 
     @GetMapping("/actuator/health")
     @Operation(summary = "Actuator health check", description = "Railway health check endpoint")
-    public ResponseEntity<Map<String, Object>> getActuatorHealth() {
-        return getHealth();
+    public ResponseEntity<String> getActuatorHealth() {
+        // Always return OK for Railway health check
+        return ResponseEntity.ok("OK");
+    }
+    
+    @GetMapping("/")
+    @Operation(summary = "Root endpoint", description = "Simple root endpoint")
+    public ResponseEntity<String> getRoot() {
+        return ResponseEntity.ok("Green Loop API is running!");
     }
 } 
