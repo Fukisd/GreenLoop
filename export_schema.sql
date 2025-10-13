@@ -51,3 +51,4 @@ WHERE tc.constraint_type = 'UNIQUE'
 ORDER BY tc.table_name, kcu.column_name;
 
 
+

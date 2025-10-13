@@ -56,6 +56,12 @@ public class SecurityConfig {
                         .requestMatchers("/api/marketplace/public/**").permitAll()
                         .requestMatchers("/api/collections/public/**").permitAll()
                         
+                        // Allow public GET access to brands and categories
+                        .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/brands/**").permitAll()
+                        .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/categories/**").permitAll()
+                        .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/items/**").permitAll()
+                        .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/items/*/statistics/**").permitAll()
+                        
                         // Swagger/OpenAPI endpoints
                         .requestMatchers("/swagger-ui/**").permitAll()
                         .requestMatchers("/swagger-ui.html").permitAll()
@@ -68,9 +74,18 @@ public class SecurityConfig {
                         .requestMatchers("/api/ws/**").permitAll()
                         .requestMatchers("/ws/**").permitAll()
                         
-                        // User endpoints (require authentication)
+                        // User endpoints (require authentication for write operations)
                         .requestMatchers("/api/user/**").hasAnyRole("USER", "ADMIN", "STAFF")
-                        .requestMatchers("/api/items/**").hasAnyRole("USER", "ADMIN", "STAFF")
+                        .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/items/**").hasAnyRole("USER", "ADMIN", "STAFF")
+                        .requestMatchers(org.springframework.http.HttpMethod.PUT, "/api/items/**").hasAnyRole("USER", "ADMIN", "STAFF")
+                        .requestMatchers(org.springframework.http.HttpMethod.DELETE, "/api/items/**").hasAnyRole("USER", "ADMIN", "STAFF")
+                        .requestMatchers(org.springframework.http.HttpMethod.PATCH, "/api/items/**").hasAnyRole("USER", "ADMIN", "STAFF")
+                        .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/brands/**").hasRole("ADMIN")
+                        .requestMatchers(org.springframework.http.HttpMethod.PUT, "/api/brands/**").hasRole("ADMIN")
+                        .requestMatchers(org.springframework.http.HttpMethod.DELETE, "/api/brands/**").hasRole("ADMIN")
+                        .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/categories/**").hasRole("ADMIN")
+                        .requestMatchers(org.springframework.http.HttpMethod.PUT, "/api/categories/**").hasRole("ADMIN")
+                        .requestMatchers(org.springframework.http.HttpMethod.DELETE, "/api/categories/**").hasRole("ADMIN")
                         .requestMatchers("/api/marketplace/**").hasAnyRole("USER", "ADMIN", "STAFF")
                         .requestMatchers("/api/collections/**").hasAnyRole("USER", "ADMIN", "STAFF")
                         .requestMatchers("/api/orders/**").hasAnyRole("USER", "ADMIN", "STAFF")

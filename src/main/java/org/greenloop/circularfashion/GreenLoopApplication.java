@@ -1,4 +1,4 @@
-﻿package org.greenloop.circularfashion;
+package org.greenloop.circularfashion;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,4 +26,4 @@ public class GreenLoopApplication {
         System.out.println("⏰ Application startup completed at: " + java.time.LocalDateTime.now());
     }
 
-} 
+}

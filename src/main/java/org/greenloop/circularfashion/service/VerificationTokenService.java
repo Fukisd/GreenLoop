@@ -11,4 +11,8 @@ public interface VerificationTokenService {
     String generatePasswordResetToken(User user);
     
     String resetPasswordWithToken(String token, String newPassword);
+    
+    void createVerificationToken(User user, String token);
+    
+    boolean validateVerificationToken(String token);
 } 

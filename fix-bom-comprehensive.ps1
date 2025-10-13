@@ -52,3 +52,4 @@ foreach ($file in $javaFiles) {
 }
 
 Write-Host "All encoding fixes completed!" -ForegroundColor Green
+

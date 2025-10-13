@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -19,8 +20,8 @@ import java.util.Map;
 public class ItemCreateRequest {
     @NotNull
     private Long ownerId;
-    private Long categoryId;
-    private Long brandId;
+    private UUID categoryId;
+    private UUID brandId;
     @NotBlank
     private String name;
     private String description;
@@ -38,4 +39,17 @@ public class ItemCreateRequest {
     private String rfidTag;
     private String qrCode;
     private String sku;
+    
+    // Additional fields for item management
+    private Integer weightGrams;
+    private Map<String, BigDecimal> dimensions;
+    private BigDecimal conditionScore;
+    private BigDecimal currentEstimatedValue;
+    private String acquisitionMethod;
+    private List<String> videos;
+    private List<String> tags;
+    private Map<String, Object> metadata;
+    private BigDecimal carbonFootprintKg;
+    private BigDecimal waterSavedLiters;
+    private BigDecimal energySavedKwh;
 } 

@@ -164,4 +164,27 @@ public class EmailServiceImpl implements EmailService {
             throw new RuntimeException("Failed to send notification email", e);
         }
     }
+
+    @Override
+    public void sendPointsExpiryNotification(String email, Integer points, Integer days) {
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+            
+            helper.setTo(email);
+            helper.setSubject("Your Points are Expiring Soon - Green Loop");
+            
+            Context context = new Context();
+            context.setVariable("points", points);
+            context.setVariable("days", days);
+            context.setVariable("email", email);
+            
+            String htmlContent = templateEngine.process("email/points-expiry", context);
+            helper.setText(htmlContent, true);
+            
+            mailSender.send(message);
+        } catch (MessagingException e) {
+            throw new RuntimeException("Failed to send points expiry notification", e);
+        }
+    }
 } 
