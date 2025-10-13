@@ -10,4 +10,5 @@ public interface EmailService {
     void sendWelcomeEmail(String email, String firstName);
     void sendNotificationEmail(String to, String subject, String templateName, Map<String, Object> variables);
     void sendVerificationEmail(String email, String token);
+    void sendPointsExpiryNotification(String email, Integer points, Integer days);
 } 

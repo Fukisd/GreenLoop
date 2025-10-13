@@ -2,10 +2,10 @@
 nixPkgs = ["jdk17", "maven"]
 
 [phases.install]
-cmds = ["mvn clean package -DskipTests"]
+cmds = ["mvn clean package -DskipTests -B"]
 
 [phases.build]
 cmds = ["echo 'Build completed'"]
 
 [start]
-cmd = "java -jar target/circular-fashion-1.0.0.jar"
+cmd = "java -Dserver.port=$PORT -jar target/circular-fashion-1.0.0.jar"

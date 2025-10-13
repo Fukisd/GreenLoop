@@ -52,3 +52,4 @@ echo 🌐 Your application should be available at the Railway URL
 echo 📊 Check the Railway dashboard for logs and monitoring
 echo 🎉 Railway deployment completed!
 pause
+

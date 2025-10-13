@@ -44,20 +44,7 @@ public class Category {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "image_url", length = 500)
-    private String imageUrl;
-
-    @Column(name = "icon")
-    private String icon;
-
     // Category specific settings
-    @Column(name = "requires_authentication")
-    @Builder.Default
-    private Boolean requiresAuthentication = false;
-
-    @Column(name = "min_condition_score", precision = 3, scale = 2)
-    @Builder.Default
-    private BigDecimal minConditionScore = BigDecimal.valueOf(1.0);
 
     @Column(name = "display_order")
     @Builder.Default

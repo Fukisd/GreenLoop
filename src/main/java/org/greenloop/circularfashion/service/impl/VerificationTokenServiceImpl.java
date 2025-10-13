@@ -93,4 +93,25 @@ public class VerificationTokenServiceImpl implements VerificationTokenService {
         verificationTokenRepository.delete(verificationToken);
         return "Password reset successfully";
     }
+
+    @Override
+    @Transactional
+    public void createVerificationToken(User user, String token) {
+        // Delete any existing tokens for this user
+        verificationTokenRepository.deleteByUserUserId(user.getUserId());
+        
+        // Create new token
+        VerificationToken verificationToken = new VerificationToken();
+        verificationToken.setToken(token);
+        verificationToken.setUser(user);
+        verificationToken.setExpiryDate(LocalDateTime.now().plusHours(24));
+        verificationTokenRepository.save(verificationToken);
+    }
+
+    @Override
+    public boolean validateVerificationToken(String token) {
+        return verificationTokenRepository.findByToken(token)
+                .map(verificationToken -> !verificationToken.getExpiryDate().isBefore(LocalDateTime.now()))
+                .orElse(false);
+    }
 } 

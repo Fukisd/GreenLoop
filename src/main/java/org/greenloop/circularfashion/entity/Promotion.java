@@ -168,3 +168,4 @@ public class Promotion extends BaseEntity {
     private Boolean autoApply = false; // Automatically apply if conditions met
 } 
 
+

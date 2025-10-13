@@ -9,3 +9,4 @@ for /r src %%f in (*.java) do (
 
 echo BOM fix completed!
 pause
+
