@@ -33,5 +33,4 @@ RUN mvn clean package -DskipTests -B \
 EXPOSE 8080
 
 # Run application
-CMD sh -c "java -jar target/circular-fashion-1.0.0.jar --server.port=${PORT:-8080}"
-
+CMD sh -c "java -jar $(find target -type f -name '*.jar' | head -n 1) --server.port=${PORT:-8080}"
