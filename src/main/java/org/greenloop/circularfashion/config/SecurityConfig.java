@@ -73,7 +73,10 @@ public class SecurityConfig {
                         .requestMatchers("/actuator/**").permitAll()
                         .requestMatchers("/api/ws/**").permitAll()
                         .requestMatchers("/ws/**").permitAll()
-                        
+                        .requestMatchers("/api/sale-items/**").permitAll()
+                        .requestMatchers("/api/sales/**").permitAll()
+                        .requestMatchers("/api/sale-details/**").permitAll()
+
                         // User endpoints (require authentication for write operations)
                         .requestMatchers("/api/user/**").hasAnyRole("USER", "ADMIN", "STAFF")
                         .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/items/**").hasAnyRole("USER", "ADMIN", "STAFF")
